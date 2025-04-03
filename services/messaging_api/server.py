@@ -1,3 +1,4 @@
+import secrets
 from flask import Flask, request, jsonify
 import json
 import os
@@ -21,7 +22,7 @@ if not os.path.exists(MESSAGE_FILE):
         json.dump([], f)
 
 def generate_session_id():
-    return str(int(random.random() * 900000) + 100000)  
+    return str(int(secrets.randbelow(100) / 100 * 900000) + 100000)  
 
 # Retrieve existing messages between two users
 def get_private_messages(user1, user2):
