@@ -24,7 +24,7 @@ def save_referral():
 @app.route('/call_referral_api', methods=['POST'])
 def call_referral_api():
     referral_email = request.form.get('referral')
-    response = requests.post(f"http://thirdparty.com/api/refer", data={"email": referral_email}) 
+    response = requests.post(f"http://thirdparty.com/api/refer", data={"email": referral_email}, timeout=5) 
     return response.text
 
 @app.route('/log_with_os', methods=['POST'])
